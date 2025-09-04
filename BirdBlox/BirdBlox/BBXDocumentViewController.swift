@@ -78,6 +78,26 @@ SFSafariViewControllerDelegate, WKNavigationDelegate {
 			
 			return .ok(.text("Hello webpage! I am a server."))
 		}
+        self.server["/ui/consoleLog"] = { (request: HttpRequest) -> HttpResponse in
+            let queries = BBTSequentialQueryArrayToDict(request.queryParams)
+            
+            guard let message = queries["message"] else {
+                return .badRequest(.text("Missing Parameters"))
+            }
+            NSLog("console.log: \(message)")
+            
+            return .ok(.text("Log received."))
+        }
+        self.server["/ui/consoleError"] = { (request: HttpRequest) -> HttpResponse in
+            let queries = BBTSequentialQueryArrayToDict(request.queryParams)
+            
+            guard let message = queries["message"] else {
+                return .badRequest(.text("Missing Parameters"))
+            }
+            NSLog("console.error: \(message)")
+            
+            return .ok(.text("Error received."))
+        }
 		self.server["/ui/translatedStrings"] = { request in
             //This request is to set some text for popups handled by the backend.
             // Currently only used in Android
