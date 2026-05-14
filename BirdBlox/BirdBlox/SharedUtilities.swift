@@ -143,7 +143,9 @@ func bitsToByte(_ bits: [UInt8]) -> UInt8? {
  */
 public func rawToTemp(_ raw_val: UInt8) -> Int{
     //print("hi")
-    let temp: Int = Int(floor(((Double(raw_val) - 127.0)/2.4 + 25) * 100 / 100));
+    //let temp: Int = Int(floor(((Double(raw_val) - 127.0)/2.4 + 25) * 100 / 100));
+    let tempOne: Double = (Double(raw_val) - 127.0)/2.4
+    let temp: Int = Int(floor((tempOne + 25) * 100 / 100));
     //print("ho")
     return temp
 }
