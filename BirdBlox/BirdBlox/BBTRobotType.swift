@@ -502,9 +502,11 @@ enum BBTRobotType {
             let letter: UInt8 = 0xCB
             //return Data(bytes: UnsafePointer<UInt8>([letter, 0xFF, 0xFF, 0xFF] as [UInt8]), count: 4)
             return [letter, 0xFF, 0xFF, 0xFF]
-        case .Finch, .Hatchling:
+        case .Finch:
             //return Data(bytes: UnsafePointer<UInt8>([0xDF] as [UInt8]), count: 1)
             return [0xDF]
+        case .Hatchling:
+            return [250, 6, 0]
         case .MicroBit:
             //return Data(bytes: UnsafePointer<UInt8>([0xCB, 0xFF, 0xFF, 0xFF] as [UInt8]), count: 4)
             return [0xCB, 0xFF, 0xFF, 0xFF]

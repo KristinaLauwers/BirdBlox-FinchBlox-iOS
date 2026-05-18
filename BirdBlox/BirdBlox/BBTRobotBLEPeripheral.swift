@@ -1078,7 +1078,7 @@ class BBTRobotBLEPeripheral: NSObject, CBPeripheralDelegate {
     }
     
     func setAllOutputsToOff() -> Bool {
-        NSLog("Setting all outputs off for \(name)")
+        NSLog("Setting all outputs off for \(name) of type \(type)")
         //Sending an ASCII capital X should do the same thing.
         //Useful for legacy firmware
 
