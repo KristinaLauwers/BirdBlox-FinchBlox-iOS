@@ -665,6 +665,7 @@ SFSafariViewControllerDelegate, WKNavigationDelegate {
     //				}
     //			}) //This won't help much because there are still ≤30 threads settings outputs
                 
+                #if !HATCHLING
                 //TODO: Add ability for output threads to abort based on a check to a boolean whenever
                 //they wake from sleep (when they are waiting to write out). Then delete this timer.
                 if #available(iOS 10.0, *) {
@@ -677,6 +678,8 @@ SFSafariViewControllerDelegate, WKNavigationDelegate {
                         }
                     }
                 }
+                #endif
+                
                 return stopAll(req)
             }
         }
